@@ -1,4 +1,4 @@
-<?php namespace Thujohn\Analytics;
+<?php namespace Ivancevich\Analytics;
 
 use Illuminate\Support\Facades\Facade;
 

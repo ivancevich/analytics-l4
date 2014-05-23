@@ -1,4 +1,4 @@
-<?php namespace Thujohn\Analytics;
+<?php namespace Ivancevich\Analytics;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,7 +19,7 @@ class AnalyticsServiceProvider extends ServiceProvider
 	 */
 	public function boot ()
 	{
-		$this->package('thujohn/analytics');
+		$this->package('ivancevich/analytics');
 	}
 
 	/**

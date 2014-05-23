@@ -1,5 +1,5 @@
 {
-    "name": "thujohn/analytics",
+    "name": "ivancevich/analytics",
     "description": "Google Analytics for Laravel 4",
 	"keywords": ["google", "analytics", "laravel", "laravel4"],
     "license": "MIT",
@@ -7,6 +7,10 @@
         {
             "name": "Jonathan Thuau",
             "email": "jonathan.thuau@gmail.com"
+        },
+        {
+            "name": "JC Ivancevich",
+            "email": "jc.ivancevich@gmail.com"
         }
     ],
     "require": {
@@ -16,7 +20,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Thujohn\\Analytics": "src/"
+            "Ivancevich\\Analytics": "src/"
         }
     },
     "minimum-stability": "dev"
