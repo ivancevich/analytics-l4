@@ -2,7 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class AnalyticsServiceProvider extends ServiceProvider {
+class AnalyticsServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -16,7 +17,7 @@ class AnalyticsServiceProvider extends ServiceProvider {
 	 *
 	 * @return void
 	 */
-	public function boot()
+	public function boot ()
 	{
 		$this->package('thujohn/analytics');
 	}
@@ -26,18 +27,16 @@ class AnalyticsServiceProvider extends ServiceProvider {
 	 *
 	 * @return void
 	 */
-	public function register()
+	public function register ()
 	{
-		$this->app['analytics'] = $this->app->share(function($app)
-		{
-			if(!\File::exists($app['config']->get('analytics::certificate_path')))
-			{
+		$this->app['analytics'] = $this->app->share(function ($app) {
+			if (!\File::exists($app['config']->get('analytics::certificate_path'))) {
 				throw new \Exception("Can't find the .p12 certificate in: " . $app['config']->get('analytics::certificate_path'));
 			}
 
 			$config = array(
 				'oauth2_client_id' => $app['config']->get('analytics::client_id'),
-				'use_objects' => $app['config']->get('analytics::use_objects'),
+				'use_objects'      => $app['config']->get('analytics::use_objects'),
 			);
 
 			$client = new \Google_Client($config);
@@ -45,7 +44,7 @@ class AnalyticsServiceProvider extends ServiceProvider {
 			$client->setAccessType('offline');
 
 			$client->setAssertionCredentials(
-				new \Google_AssertionCredentials(
+				new \Google_Auth_AssertionCredentials(
 					$app['config']->get('analytics::service_email'),
 					array('https://www.googleapis.com/auth/analytics.readonly'),
 					file_get_contents($app['config']->get('analytics::certificate_path'))
@@ -61,7 +60,7 @@ class AnalyticsServiceProvider extends ServiceProvider {
 	 *
 	 * @return array
 	 */
-	public function provides()
+	public function provides ()
 	{
 		return array('analytics');
 	}
